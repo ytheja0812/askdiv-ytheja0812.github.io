@@ -62,6 +62,7 @@
             font-size: 1.3rem;
             font-weight: 600;
             color: #ff0000;
+            transition: all 2s ease-in-out;
         }
         .yes-or-no-cont{
             position: fixed;
@@ -122,16 +123,33 @@
             <!-- yes button -->
             <div class="yes-btn" onmouseover="onYesButtonMouseOver();" onmouseleave="onYesButtonMouseOut();" onclick="onYesButtonClick();">Yes</div>
             <!-- no button -->
-            <div class="no-btn" onmouseover="onNoButtonMoouseOver();">No</div>
+            <div class="no-btn" onmouseover="onNoButtonMoouseOver();" onclick="onNoButtonMoouseOver();" onmouseenter="onNoButtonMoouseOver();">No</div>
         </div>
     </div>
     <script>
         
         function onYesButtonClick(){
             changetoSnoopyHappy();
+            try{
+                deleteAllImagesExceptHappy();
+
+            }
+            catch(e){
+
+            }
             changeAskOutMsgtoYeahHurray();
             deleteYesOrNoCont();
-            openWhatsApp();
+            setTimeout(openWhatsApp, 2000);
+        }
+        function deleteAllImagesExceptHappy(){
+            let snoopyImg = document.querySelector(".snoopyimg");
+            let snoopyCryImg = document.querySelector(".snoopycryimg");
+            let snoopyBlushImg = document.querySelector(".snoopyblushimg");
+            let snoopyHappyImg = document.querySelector(".snoopyhappyimg");
+            // delete tags permanently  
+            snoopyImg.remove();
+            snoopyCryImg.remove();
+            snoopyBlushImg.remove();
         }
         function openWhatsApp(){
             window.open("https://wa.me/8555865989?text=Ekkada%20Kaludham%20dinner,%20lunch,%20evening%20snacks?", "_blank");
@@ -179,8 +197,8 @@
             snoopyHappyImg.style.display = "none";
             changeAskOutMsgtoDontDoThat();
             //after 1 second change to normal image and change askout msg
-            setTimeout(changetoSnoopyNormal, 500);
-            setTimeout(changeAskOutMsgtoShallWeMeet, 500);
+            setTimeout(changetoSnoopyNormal, 1000);
+            setTimeout(changeAskOutMsgtoShallWeMeet, 1000);
 
         }
         function changetoSnoopyNormal(){
@@ -229,6 +247,10 @@
         function changeAskOutMsgtoYeahHurray(){
             let askOutMsg = document.querySelector(".askoutmsg");
             askOutMsg.innerHTML = "Yeah Hurray !!";
+            // increase and decreae font size
+            askOutMsg.style.fontSize = "2rem";
+            askOutMsg.style.color = "#ff0000";
+
         }
     </script>
 </body>
