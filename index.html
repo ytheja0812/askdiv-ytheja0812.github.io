@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Can we meet ?</title>
+    <style>
+        .main-cont{
+            width: 100%;
+            height: 100vh;
+            /* light pink bg*/
+            background-color: #f9e6e6;  
+        }
+        .snoopcont {
+            /* center snoopy cont fixed*/
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .snoopyimg {
+            /* center snoopy img */
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .snoopycryimg {
+            /* center snoopy img */
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: none;
+        }
+        .snoopyblushimg {
+            /* center snoopy img */
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: none;
+        }
+        .snoopyhappyimg {
+            /* center snoopy img */
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: none;
+        }
+        /* askout msg fixed top right of snoopy */
+        .askoutmsg-cont {
+            position: absolute;
+            top: 15%;
+            left: 70%;
+            transform: translate(-50%, -50%);
+           
+        }
+        .askoutmsg {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #ff0000;
+        }
+        .yes-or-no-cont{
+            position: fixed;
+            bottom: 10px;
+            width: 100%;
+            height: 40%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .yes-btn{
+            width: 100px;
+            height: 50px;
+            border-radius: 10px;
+            background-color: #ff0000;
+            color: #fff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            text-align: center;
+            line-height: 50px;
+            cursor: pointer;
+            margin: 10px;
+        }
+        .no-btn{
+            /* button style */
+            width: 100px;
+            height: 50px;
+            border-radius: 10px;
+            background-color: #ff0000;
+            color: #fff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            text-align: center;
+            line-height: 50px;
+            cursor: pointer;
+            margin: 10px;
+            transition: all 0.5s ease-in-out;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="main-cont">
+        <div class="snoopycont">
+            <img class="snoopyimg" src="https://drive.google.com/uc?export=view&id=1p-yagpKT0tCEnvzPqwqmLgt_TxkwsM3b" alt="snoopy" width="300px" height="300px">
+            <img class="snoopycryimg" src="https://drive.google.com/uc?export=view&id=1CnOmILWu5B80XPqaejDD8Ctf_5_kBb7y" alt="snoopy" width="300px" height="300px">
+            <img class="snoopyblushimg" src="https://drive.google.com/uc?export=view&id=14t5nmEJVrL8ULuvmZc_RET3QO9GquPnc" alt="snoopy" width="150px" height="150px">
+            <img class="snoopyhappyimg" src="https://drive.google.com/uc?export=view&id=1ynBRZbWw-ynzWGabI05krZr_LnsCeMc9" alt="snoopy" width="300px" height="300px">
+
+        </div>
+        <div class="askoutmsg-cont">
+            <h1 class="askoutmsg"> Div, Shall we meet before i go to chennai ?</h1>
+        </div>
+        <div class="yes-or-no-cont">
+            <!-- yes button -->
+            <div class="yes-btn" onmouseover="onYesButtonMouseOver();" onmouseleave="onYesButtonMouseOut();" onclick="onYesButtonClick();">Yes</div>
+            <!-- no button -->
+            <div class="no-btn" onmouseover="onNoButtonMoouseOver();">No</div>
+        </div>
+    </div>
+    <script>
+        
+        function onYesButtonClick(){
+            changetoSnoopyHappy();
+            changeAskOutMsgtoYeahHurray();
+            deleteYesOrNoCont();
+            openWhatsApp();
+        }
+        function openWhatsApp(){
+            window.open("https://wa.me/8555865989?text=Ekkada%20Kaludham%20dinner,%20lunch,%20evening%20snacks?", "_blank");
+        }
+        function deleteYesOrNoCont(){
+            let yesOrNoCont = document.querySelector(".yes-or-no-cont");
+            yesOrNoCont.style.display = "none";
+        }
+        function onYesButtonMouseOver(){
+            changetoSnoopyBlushing();
+            changeAskOutMsgtoDontChangeYourMind();
+        }
+        function onYesButtonMouseOut(){
+            changetoSnoopyNormal();
+            changeAskOutMsgtoShallWeMeet();
+        }
+        function onNoButtonMoouseOver(){
+           let noBtn = document.querySelector(".no-btn");
+           // randomlychange the position of no button
+              noBtn.style.position = "absolute";
+            //   maxtop = 80%
+            // but not anything between 25 to 50
+            // min top = 0%
+              let randomTop  = Math.floor(Math.random() * 80);
+              while(randomTop > 25 && randomTop < 58){
+                  randomTop = Math.floor(Math.random() * 80);
+              }
+            // maxleft = 60%
+            // minleft = 0%
+              let randomLeft = Math.floor(Math.random() * 60);
+              noBtn.style.top = randomTop + "%";
+              noBtn.style.left = randomLeft + "%";
+
+              changetoSnoopyCrying();
+
+        }
+        function changetoSnoopyCrying(){
+            let snoopyImg = document.querySelector(".snoopyimg");
+            let snoopyCryImg = document.querySelector(".snoopycryimg");
+            let snoopyBlushImg = document.querySelector(".snoopyblushimg");
+            let snoopyHappyImg = document.querySelector(".snoopyhappyimg");
+            snoopyImg.style.display = "none";
+            snoopyBlushImg.style.display = "none";
+            snoopyCryImg.style.display = "block";
+            snoopyHappyImg.style.display = "none";
+            changeAskOutMsgtoDontDoThat();
+            //after 1 second change to normal image and change askout msg
+            setTimeout(changetoSnoopyNormal, 500);
+            setTimeout(changeAskOutMsgtoShallWeMeet, 500);
+
+        }
+        function changetoSnoopyNormal(){
+            let snoopyImg = document.querySelector(".snoopyimg");
+            let snoopyCryImg = document.querySelector(".snoopycryimg");
+            let snoopyBlushImg = document.querySelector(".snoopyblushimg");
+            let snoopyHappyImg = document.querySelector(".snoopyhappyimg");
+            snoopyImg.style.display = "block";  
+            snoopyBlushImg.style.display = "none";
+            snoopyCryImg.style.display = "none";
+            snoopyHappyImg.style.display = "none";
+        }
+        function changetoSnoopyHappy(){
+            let snoopyImg = document.querySelector(".snoopyimg");
+            let snoopyCryImg = document.querySelector(".snoopycryimg");
+            let snoopyBlushImg = document.querySelector(".snoopyblushimg");
+            let snoopyHappyImg = document.querySelector(".snoopyhappyimg");
+            snoopyImg.style.display = "none";
+            snoopyBlushImg.style.display = "none";
+            snoopyCryImg.style.display = "none";
+            snoopyHappyImg.style.display = "block";
+        }
+        function changetoSnoopyBlushing(){
+            let snoopyImg = document.querySelector(".snoopyimg");
+            let snoopyCryImg = document.querySelector(".snoopycryimg");
+            let snoopyBlushImg = document.querySelector(".snoopyblushimg");
+            let snoopyHappyImg = document.querySelector(".snoopyhappyimg");
+            snoopyImg.style.display = "none";
+            snoopyBlushImg.style.display = "block";
+            snoopyCryImg.style.display = "none";
+            snoopyHappyImg.style.display = "none";
+        }
+        function changeAskOutMsgtoDontDoThat(){
+            let askOutMsg = document.querySelector(".askoutmsg");
+            askOutMsg.innerHTML = "Don't do that !!";
+        }
+        function changeAskOutMsgtoDontChangeYourMind(){
+            let askOutMsg = document.querySelector(".askoutmsg");
+            askOutMsg.innerHTML = "Don't change your mind !!";
+        }
+        function changeAskOutMsgtoShallWeMeet(){
+            let askOutMsg = document.querySelector(".askoutmsg");
+            askOutMsg.innerHTML = "Div, Shall we meet before i go to chennai ?";
+        }
+
+        function changeAskOutMsgtoYeahHurray(){
+            let askOutMsg = document.querySelector(".askoutmsg");
+            askOutMsg.innerHTML = "Yeah Hurray !!";
+        }
+    </script>
+</body>
+</html>
